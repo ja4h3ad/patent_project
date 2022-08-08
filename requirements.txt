@@ -1,0 +1,5 @@
+pytest~=7.1.2
+beautifulsoup4
+mysql-connector
+pyodbc
+mysql-connector-python~=8.0.30
