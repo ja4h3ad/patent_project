@@ -1,22 +1,22 @@
-# please note that for the purposes of the week 5 assignment, the user input will be solicited
-# ~ artificially, however the actual user input will be derived from the web form
-
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
-import db.sql_repo
-repo = db.sql_repo.patentsSQL()
+import re
+import numpy as np
 
-while True:
+# import db.sql_repo
+# repo = db.sql_repo.patentsSQL()
 
-    ui_simulation = input ("Type your string here.  Please be sure to use a descriptive phrase")
-
-    if len(ui_simulation) > 150:
-        print ("Error! Only 150 characters allowed!")
-
-    else:
-        break
-print ("Your input was:", ui_simulation)
+# while True:
+#
+#     ui_simulation = input ("Type your string here.  Please be sure to use a descriptive phrase")
+#
+#     if len(ui_simulation) > 150:
+#         print ("Error! Only 150 characters allowed!")
+#
+#     else:
+#         break
+# print ("Your input was:", ui_simulation)
 
 
 # initialize the data_cleaning process
