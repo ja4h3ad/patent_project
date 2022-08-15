@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,45 +5,77 @@
     <title>I've a great idea, and it's going to make me rich</title>
 </head>
 <body>
-<h1>Patent similarity detection</h1>
-<h2>Describe your idea in simple text here</h2>
+<div class="container">
+<h2>Transcript Parser</h2>
+<h3 class="form-text">Patent similarity detection</h3>
 
-<h3>Now we will see if your idea matches another patent</h3>
+<h3>This project implementes the following use cases:</h3>
+<p>
+Personas:
+
+•	Potential Inventor
+•	Patent Search Service (PSS, “The System”) returning the potential matches and a possible success-based rating
+
+1.	Front-end UI parser:
+Given:  Potential Inventor enters a string of words based on their invention idea
+When:  The user presses “submit”
+Then:  The patent-search service will accept the string and parse the string using SOTA NLP concepts.
+
+2.	Web-Scraper:
+
+Given:  The database of inventions for patents.google.com needs to be added to the server-side application
+When:  PSS scrapes the google database - this is a handcrafted process due to the Google trickeration
+Then:  Essential elements of information (patent ID, filing date, etc.) will be added to the PSS database
+
+3.	NLP Pipeline
+
+Given:  The potential Inventor has entered a string via the form field
+When:  The user presses submit
+Then:  The PSS will remove unwanted elements from the string and store the cleaned/tokenized data as a database entry
+
+4.	Potential Inventor feedback loop
+
+Given:  The Potential Inventor has entered a search string and pressed submit:
+When:  the string has been pre-processed for NLP
+Then:  The UI will return the tokenized string as well as the collected search string and search ID  (Depending on my
+  investigation into the google patent data, I might limit some of the standard pre-processing).
+
+5.	 Similarity Detection and Rating
+
+Given:  Potential Inventor has entered search string and the search string has been parsed by the PSS
+When:  The PSS detects a similarity to the Potential Inventor parsed request string
+Then:  The PSS will provide feedback to the Potential Inventor indicating that (a) a similarity exists to other
+  patents and (b) a measurement of the similarity on a scale of 1 to 3.  This numerical rating will operate
+  in this fashion:  1 = high levels of similarity to other patents; 2 = neutral similarity rating; 3 = no similarity
+
+</p>
+
 <div>
 <p>Endpoint: http://localhost:5000/parse</p>
 <p>Request type: POST</p>
-<p>Request body: JSON with field "phrase".  Please stick with biomedical or networking / VoIP ideas, e.g. </p>
+<p>Request body: JSON with fields "file_name", e.g. </p>
 <pre>
   {
-    "idea": "System and method to prevent wrong site surgery"
+    "search_string": "I have an idea and it is...",
   }
 </pre>
-<p>Response: JSON with patent details, e.g. </p>
+<p>Response: JSON with parse details, e.g. </p>
 <pre>
   [
   {
-    "Title":"Methods and apparatus for secondary content analysis and provision within a network",
-    "Inventor":"Adam Boskovich",
-    "Publication Date":"2022-03-10",
-    "pID": US20220078529A1",
-    "Result Link":"https://patents.google.com/patent/US20220078529A1/en?oq=US20220078529A1"
-
+    "patent info": {
+      "pID": "Patent ID",
+      "title: "Patent title"
+      "inventor:  "Patent Inventor"
+      "publicationDate:  "Publication date"
+      "resultLink":  "Result link - an actual URL"
   }
-]
-
+  ]
 </pre>
 </div>
 
-<h3>Finding the match</h3>
-<div>
-<p>Endpoint: http://localhost:5000/query</p>
-<p>Request type: GET</p>
-<p>Response: </p>
-<pre>
-  {
-    "msg": "success"
-  }
-</pre>
+
+</div>
 </div>
 </body>
 </html>

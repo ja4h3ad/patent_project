@@ -11,7 +11,7 @@ CREATE TABLE patentData (
     inventor VARCHAR (500), /* could be more than one inventor, long names */
     publicationDate date,
     resultLink VARCHAR (100), /* this will be stored as a URL */
-    PRIMARY KEY (id)
+    CONSTRAINT PRIMARY KEY (id)
 );
 
 
